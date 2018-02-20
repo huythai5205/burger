@@ -1,0 +1,36 @@
+<div class="index-container">
+    <div class="burger-logo">
+        <img src="./images/burger.gif">
+        <h3>Eat-Da-Burger</h3>
+    </div>
+
+    <div class="display-burger-container">
+
+        <div class="grid-x">
+
+            <div class="cell small-8 to-be-devour-container">
+                {{#each burgersData}} {{#unless devoured}}
+                <h4>{{burger_name}}</h4>
+                <button name='{{id}}'>Devour it!</button>
+                {{/unless}} {{/each}}
+            </div>
+
+            <div class="cell small-4 devoured-container">
+                {{#each burgersData}} {{#if devoured}}
+                <h4>{{burger_name}} 2</h4>
+                {{/if}} {{/each}}
+            </div>
+
+        </div>
+    </div>
+
+    <form action="/" method="POST">
+        <div class="input-group">
+            <input class="input-group-field" type="text" name="burgerName">
+            <div class="input-group-button">
+                <input type="submit" class="button" value="Submit">
+            </div>
+        </div>
+    </form>
+
+</div>
