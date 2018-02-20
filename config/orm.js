@@ -18,12 +18,20 @@ const orm = {
             if (err) {
                 console.log(err);
             } else {
-                _callback(result);
+                _callback();
             }
         });
     },
-    update: function () {
-
+    update: function (burgerId, _callback) {
+        console.log(burgerId);
+        let query = 'UPDATE burger SET devoured=true WHERE id=?';
+        connection.query(query, [burgerName], function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                _callback();
+            }
+        });
     }
 };
 

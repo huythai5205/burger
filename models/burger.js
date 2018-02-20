@@ -8,8 +8,14 @@ const burger = {
     },
 
     create: function (burgerName, _callback) {
-        orm.insert(burgerName, (res) => {
-            _callback(res);
+        orm.insert(burgerName, () => {
+            _callback();
+        });
+    },
+
+    update: function (_callback) {
+        orm.update(burgerId, () => {
+            _callback();
         });
     }
 };

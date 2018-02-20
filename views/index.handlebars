@@ -10,21 +10,32 @@
 
             <div class="cell small-8 to-be-devour-container">
                 {{#each burgersData}} {{#unless devoured}}
-                <h4>{{burger_name}}</h4>
-                <button name='{{id}}'>Devour it!</button>
+                <form action="/update?_method=PUT" method="POST">
+                    <div class="grid-container">
+                        <div class="grid-x grid-padding-x">
+                            <div class="medium-6 cell">
+                                <label>{{burger_name}}</label>
+                            </div>
+                            <div class="medium-6 cell">
+                                <button type="submit" class="button" name="burgerID" value="{{id}}">Devour it!</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
                 {{/unless}} {{/each}}
             </div>
 
             <div class="cell small-4 devoured-container">
                 {{#each burgersData}} {{#if devoured}}
-                <h4>{{burger_name}} 2</h4>
+                <span class="label success">{{burger_name}} 2</span>
                 {{/if}} {{/each}}
             </div>
 
         </div>
     </div>
 
-    <form action="/" method="POST">
+    <form action="/create" method="POST">
         <div class="input-group">
             <input class="input-group-field" type="text" name="burgerName">
             <div class="input-group-button">

@@ -1,9 +1,9 @@
 const express = require('express');
 const burger = require('../models/burger.js');
-const app = express();
-// const router = express.Router();
+// const app = express();
+const router = express.Router();
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     burger.getAll((burgersData) => {
         console.log(burgersData);
         res.render('index', {
@@ -12,14 +12,17 @@ app.get('/', (req, res) => {
     });
 });
 
-app.post('/', (req, res) => {
+router.post('/create', (req, res) => {
     burger.create(req.body.burgerName, () => {
         res.redirect('/');
     });
 });
 
-app.delete('', (req, res) => {
-
+router.put('/update', (req, res) => {
+    console.log(req.body);
+    burger.update(req.body.burgerId, () => {
+        res.redirect('/');
+    })
 });
 
-module.exports = app;
+module.exports = router;
