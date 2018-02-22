@@ -1,37 +1,35 @@
 const connection = require('./connection.js');
 
+const callDatabase = function (queryString, _callback) {
+    connection.query(queryString, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            _callback(result);
+        }
+    });
+}
+
 const orm = {
+
     selectAll: function (_callback) {
-        let query = 'SELECT * FROM burgers';
-        connection.query(query, function (err, result) {
-            if (err) {
-                console.log(err);
-            } else {
-                _callback(result);
-            }
-        });
+        const queryString = 'SELECT * FROM burgers';
+        callDatabase(queryString, _callback);
     },
+
     insert: function (burgerName, _callback) {
-        console.log(burgerName);
-        let query = 'INSERT INTO burgers(burger_name) VALUES(?)';
-        connection.query(query, [burgerName], function (err, result) {
-            if (err) {
-                console.log(err);
-            } else {
-                _callback();
-            }
-        });
+        const queryString = `INSERT INTO burgers(burger_name) VALUES(${burgerName})`;
+        callDatabase(queryString, _callback);
     },
+
     update: function (burgerId, _callback) {
-        console.log(burgerId);
-        let query = 'UPDATE burgers SET devoured=true WHERE id=?';
-        connection.query(query, [burgerId], function (err, result) {
-            if (err) {
-                console.log(err);
-            } else {
-                _callback();
-            }
-        });
+        const queryString = `UPDATE burgers SET devoured=true WHERE id=${burgerId}`;
+        callDatabase(queryString, _callback);
+    },
+
+    delete: function (burgerId, _callback) {
+        const queryString = `DELETE FROM burgers WHERE id=${burgerId}`;
+        callDatabase(queryString, _callback);
     }
 };
 

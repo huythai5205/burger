@@ -8,34 +8,44 @@
 
         <div class="grid-x">
 
-            <div class="cell small-8 to-be-devour-container">
+            <div class="cell small-6 to-be-devour-container">
                 {{#each burgersData}} {{#unless devoured}}
-                <form action="/update?_method=PUT" method="POST">
+                <form action="/api/update?_method=PUT" method="POST">
                     <div class="grid-container">
                         <div class="grid-x grid-padding-x">
-                            <div class="medium-6 cell">
+                            <div class="medium-8 cell">
                                 <label>{{burger_name}}</label>
                             </div>
-                            <div class="medium-6 cell">
+                            <div class="medium-4 cell">
                                 <button type="submit" class="button" name="burgerId" value="{{id}}">Devour it!</button>
                             </div>
                         </div>
                     </div>
                 </form>
-
                 {{/unless}} {{/each}}
             </div>
 
-            <div class="cell small-4 devoured-container">
+            <div class="cell small-6 devoured-container">
                 {{#each burgersData}} {{#if devoured}}
-                <h4>{{burger_name}} 2</h4>
+                <form action="/api/delete?_method=DELETE" method="POST">
+                    <div class="grid-container">
+                        <div class="grid-x grid-padding-x">
+                            <div class="medium-8 cell">
+                                <label>{{burger_name}}</label>
+                            </div>
+                            <div class="medium-3 cell">
+                                <button type="submit" class="button" name="burgerId" value="{{id}}">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 {{/if}} {{/each}}
             </div>
 
         </div>
     </div>
 
-    <form action="/create" method="POST">
+    <form action="/api/create" method="POST">
         <div class="input-group">
             <input class="input-group-field" type="text" name="burgerName">
             <div class="input-group-button">

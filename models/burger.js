@@ -17,6 +17,12 @@ const burger = {
         orm.update(burgerId, () => {
             _callback();
         });
+    },
+
+    delete: function (burgerId, _callback) {
+        orm.delete(burgerId, () => {
+            _callback();
+        });
     }
 };
 
