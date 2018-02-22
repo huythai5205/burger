@@ -13,7 +13,7 @@ const burger = {
         });
     },
 
-    update: function (_callback) {
+    update: function (burgerId, _callback) {
         orm.update(burgerId, () => {
             _callback();
         });

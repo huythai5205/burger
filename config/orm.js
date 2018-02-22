@@ -24,8 +24,8 @@ const orm = {
     },
     update: function (burgerId, _callback) {
         console.log(burgerId);
-        let query = 'UPDATE burger SET devoured=true WHERE id=?';
-        connection.query(query, [burgerName], function (err, result) {
+        let query = 'UPDATE burgers SET devoured=true WHERE id=?';
+        connection.query(query, [burgerId], function (err, result) {
             if (err) {
                 console.log(err);
             } else {

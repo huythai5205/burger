@@ -17,7 +17,7 @@
                                 <label>{{burger_name}}</label>
                             </div>
                             <div class="medium-6 cell">
-                                <button type="submit" class="button" name="burgerID" value="{{id}}">Devour it!</button>
+                                <button type="submit" class="button" name="burgerId" value="{{id}}">Devour it!</button>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
 
             <div class="cell small-4 devoured-container">
                 {{#each burgersData}} {{#if devoured}}
-                <span class="label success">{{burger_name}} 2</span>
+                <h4>{{burger_name}} 2</h4>
                 {{/if}} {{/each}}
             </div>
 

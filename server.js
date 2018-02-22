@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const routes = require('./controllers/burgers_controllers.js')
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 
 app.use(bodyParser.json());
-
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "./foundation-6.4.2")));
 app.use('/', routes);
 
