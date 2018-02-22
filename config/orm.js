@@ -18,7 +18,7 @@ const orm = {
     },
 
     insert: function (burgerName, _callback) {
-        const queryString = `INSERT INTO burgers(burger_name) VALUES(${burgerName})`;
+        const queryString = `INSERT INTO burgers(burger_name) VALUES('${burgerName}')`;
         callDatabase(queryString, _callback);
     },
 
